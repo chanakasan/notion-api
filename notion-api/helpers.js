@@ -1,5 +1,5 @@
-import Config from './config'
-import { getDatabaseById } from './index'
+import Config from './config.js'
+import { getDatabaseById } from './index.js'
 
 export const getPublished = (database) => {
   return database.filter((post) => {

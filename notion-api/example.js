@@ -3,7 +3,7 @@ import {
   getPageSlug,
   getCoverImageUrl,
   truncateText,
-} from "@/lib/notion-api/utils";
+} from "./utils.js";
 
 export const createProjectFromPost = (post) => {
   const properties = getPageProperties(post);

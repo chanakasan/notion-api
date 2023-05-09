@@ -1,6 +1,6 @@
 import slugify from 'slugify'
 import { Client } from '@notionhq/client'
-import Config from './config'
+import Config from './config.js'
 
 const notionClient = new Client({
   auth: Config.get('notion_token')
@@ -26,7 +26,7 @@ const getBlocksById = async (blockId) => {
   const blocks = []
   let cursor
   while (true) {
-    const { results, next_cursor } = 
+    const { results, next_cursor } =
       await notionClient.blocks.children.list({
         start_cursor: cursor,
         block_id: blockId,
