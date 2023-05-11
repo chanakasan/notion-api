@@ -12,11 +12,14 @@ export const getPageProperties = (page) => {
 }
 
 export const getPageSlug = (page) => {
+  let slug = "none"
   try {
-    return slugify(page.properties.Name.title[0].plain_text).toLowerCase()
+    slug = slugify(page.properties.Name.title[0].plain_text).toLowerCase()
   } catch (err) {
-    return page.url.split('/').pop()
+    const path = page.url.split('/').pop()
+    slug = path.substring(path.length, -33)
   }
+  return slug
 }
 
 export const getCoverImageUrl = (properties, imageField) => {
