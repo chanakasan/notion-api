@@ -17,7 +17,7 @@ app.get('/one', (req, res) => {
   res.json(project1)
 });
 
-app.listen(3000, () => {
+app.listen(3001, () => {
   console.log('server started');
 });
 
@@ -31,7 +31,7 @@ async function get_one() {
   let post = null;
   let slug = null;
   try {
-    slug = 'oria-2fa'
+    slug = 'ecommerce-website-1'
     const db = await getDb1();
     post = await getPublished(db)
       .find((post) => getPageSlug(post) === slug);
