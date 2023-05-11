@@ -1,9 +1,36 @@
 import slugify from 'slugify'
 
+const normalize = (property) =>
+  slugify(property, { replacement: '_', lower: true })
+
+export const createDataMapper = (array) => {
+  const dataMap = {}
+  array.forEach((p) => {
+    if (Array.isArray(p)) {
+      if (p.length !== 2) {
+        throw new Error("must be an array in format ['src prop', 'dest prop']")
+      }
+      const src = normalize(p[0])
+      const dest = normalize(p[1])
+      dataMap[src] = dest
+    }
+  })
+  const mapper = (page) => {
+    const result = {}
+    const properties = getPageProperties(page)
+    var test = 1
+    for (const [src, dest] of Object.entries(dataMap)) {
+      result[dest] = properties[src]
+    }
+    return result
+  }
+  return mapper
+}
+
 export const getPageProperties = (page) => {
   const properties = {}
   for (const property in page.properties) {
-    const key = slugify(property, { replacement: '_', lower: true })
+    const key = normalize(property)
     const obj = page.properties[property]
     const value = obj[obj.type]
     properties[key] = Array.isArray(value) ? value[0] : value
