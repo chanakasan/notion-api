@@ -5,7 +5,8 @@ export const getPageProperties = (page) => {
   for (const property in page.properties) {
     const key = slugify(property, { replacement: '_', lower: true })
     const obj = page.properties[property]
-    properties[key] = obj[obj.type][0]
+    const value = obj[obj.type]
+    properties[key] = Array.isArray(value) ? value[0] : value
   }
   return properties
 }
