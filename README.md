@@ -4,7 +4,7 @@
 
 ```
 git clone <repo>
-mv notion-api/ <project>/lib/notion-api
+mv notion-api/lib <project>/lib/notion-api
 ```
 
 **Install packages**
