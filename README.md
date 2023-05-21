@@ -1,7 +1,5 @@
 # Notion API
 
-Read doc.md for usage examples.
-
 **Clone**
 
 ```
